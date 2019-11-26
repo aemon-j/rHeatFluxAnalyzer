@@ -14,7 +14,6 @@
 #'  TOGA COARE and TAO data. Journal of Climate 11: 2628-2644.
 
 
-
 sens_latent <- function(ts,Uz,ta,rh,hu,ht,hq,alt,lat){
 
   # hardcoding limits seems critical to me...
@@ -280,7 +279,7 @@ sens_latent <- function(ts,Uz,ta,rh,hu,ht,hq,alt,lat){
     rm(zi)
 
     #Uz[idx_vs] <- max(c(Re(Uz[idx_vs]),0.1),na.rm = TRUE)
-    Uz[idx_vs&Re(Uz[idx_vs])<0.1] <- 0.1
+    Uz[idx_vs][Re(Uz[idx_vs])<0.1] <- 0.1
 
     # avoid singularity at um <- 0 for unstable conditions
     idx <- idx_m_vu | idx_m_u # unstable
